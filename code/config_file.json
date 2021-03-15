@@ -3,6 +3,7 @@
         "outdir": "../outputs/01_fastqc"
     },
     "general":{
+        "fastq_ext": ".fastq.gz",
         "paired": "yes",
         "read_length": 150,
         "fastq_dir": "../data"
