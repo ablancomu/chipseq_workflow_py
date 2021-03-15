@@ -29,6 +29,7 @@ import fastqc
 def arguments_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument("config_file", help="Configuration file in json format" )
+    #parser.add_argument("--")
     args = parser.parse_args()
     # Check if config file exist
     config_file = pathlib.Path(args.config_file)
@@ -45,6 +46,7 @@ if __name__== "__main__":
     with open(arguments.config_file) as jsonf:
         config_file = json.load(jsonf)
     
+    # Execute fastQC
     fastqc.fastQC(config_file['general']['fastq_dir'], config_file['fastqc']['outdir'])
 
 
