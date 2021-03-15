@@ -47,7 +47,7 @@ if __name__== "__main__":
         config_file = json.load(jsonf)
     
     # Execute fastQC
-    fastqc.fastQC(config_file['general']['fastq_dir'], config_file['fastqc']['outdir'])
+    fastqc.fastQC(config_file['general']['fastq_dir'], config_file['fastqc']['outdir'], config_file['general']['fastq_ext'])
 
 
 

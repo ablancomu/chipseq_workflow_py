@@ -13,7 +13,7 @@ import shutil
 import subprocess
 import json
 
-def fastQC(input_dir, output_dir):
+def fastQC(input_dir, output_dir, fq_ext):
     ## Create outdir 
     pathlib.Path(output_dir).mkdir(parents=True, exist_ok=True)
     # Create tmp folder
@@ -21,7 +21,7 @@ def fastQC(input_dir, output_dir):
     
     # Get list of fastq files
     fastq_files = os.listdir(input_dir)
-    fastq_files = [ os.path.join(input_dir, x) for x in fastq_files ]
+    fastq_files = [ os.path.join(input_dir, x) for x in fastq_files if x.endswith(fq_ext) ]
     
     # Run fastqc
     cmd = ["fastqc", "-o", output_dir, "--format", "fastq", "--threads", str(len(fastq_files)), "--dir", os.path.join(output_dir,'tmp_dir')]
