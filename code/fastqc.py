@@ -1,7 +1,13 @@
 #!/usr/bin/env python
-
-# Script to run fastQC on fastq files.
-# Input: a folder with the fastq files
+#
+# Module to run fastQC on fastq files.
+# Author: Alejandro Blanco
+#
+# Inputs: 
+#   - Input folder with the fastq files 
+#   - Output folder
+#   - fastq extension (.fastq.gz, .fastq, .fq, .fq.gz)
+#-----------------------------------------------------------------
 
 # Import libraries
 import sys
@@ -13,6 +19,7 @@ import shutil
 import subprocess
 import json
 
+# Function to run fastQC
 def fastQC(input_dir, output_dir, fq_ext):
     ## Create outdir 
     pathlib.Path(output_dir).mkdir(parents=True, exist_ok=True)

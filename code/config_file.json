@@ -1,6 +1,7 @@
 {
     "fastqc":{
-        "outdir": "../outputs/01_fastqc"
+        "outdir": "../outputs/01_fastqc",
+        "fastq_ext": ".fastq.gz"
     },
     "general":{
         "fastq_ext": ".fastq.gz",
@@ -8,11 +9,12 @@
         "read_length": 150,
         "fastq_dir": "../data"
     },
-    "reditools":{
-        "ref_fasta": "/hpcudd/home/ablanco/resources/broadHg38/Homo_sapiens_assembly38.fasta",
-        "outdir": "/hpcudd/home/ablanco/repositories/SRA_estudios_covid/outputs/reditools2",
-        "threads": 14,
-        "bams": "/hpcudd/home/ablanco/repositories/SRA_estudios_covid/outputs/STAR_alingments"
+    "bowtie2":{
+        "ref_index": "/home/resources/genomes/Genomes/mm10/Sequence/Bowtie2Index/genome",
+        "outdir": "../outputs/03_bowtie2",
+        "threads": 5,
+        "fastq_dir": "../data",
+        "fastq_ext": ".fastq.gz"
     }
 
 }
