@@ -15,7 +15,12 @@
         "threads": 5,
         "fastq_dir": "../data",
         "fastq_ext": ".fastq.gz"
+    },
+    "samtools":{
+        "sam_dir": "../outputs/03_bowtie2",
+        "sam_ext": ".sam",
+        "outdir": "../outputs/04_samtools",
+        "threads":5
     }
-
 }
 
