@@ -32,7 +32,7 @@ import bowtie2
 def arguments_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument("config_file", help="Configuration file in json format" )
-    #parser.add_argument("--")
+    parser.add_argument("--drompaplus", action="store_true", help="Execute Drompaplus. Requires the same datasheet as ChIPQC. The file's path has to be specified in the configuration file with the key 'datasheet' under 'Drompaplus' section.")
     args = parser.parse_args()
     # Check if config file exist
     config_file = pathlib.Path(args.config_file)
@@ -57,10 +57,17 @@ if __name__== "__main__":
     # Read arguments
     arguments = arguments_parser()
     
+
     # Read the config_file
     with open(arguments.config_file) as jsonf:
         config_file = json.load(jsonf)
     
+    # Check if drompaplus mode is activated
+    if arguments.drompaplus:
+        # call drompaplus
+        pass
+        # quit()
+
     # Get list of sampleIDs
     fastq_ids = get_ids(config_file['general']['fastq_dir'], config_file['general']['fastq_ext'])
     print('List of IDs to process: {}'.format(fastq_ids))

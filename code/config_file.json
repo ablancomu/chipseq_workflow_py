@@ -15,7 +15,10 @@
         "threads": 5,
         "fastq_dir": "../data",
         "fastq_ext": ".fastq.gz"
+    },
+    "drompaplus":{
+        "data_sheet": "../outputs/H3K27ac_datasheet2.csv",
+        "outdir": "../outputs/DROMPAplus"
     }
-
 }
 

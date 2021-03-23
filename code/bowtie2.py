@@ -3,8 +3,9 @@
 # Module to execute bowtie2 on a paired end data.
 # Author: Alejandro Blanco
 #
-# Inputs:
-#   - 
+# Inputs for Bowtie2 function:
+#   - A tuple generated with the function get_tuples():
+#       tuple: [ R1, R2, sampleID, threads_for_bowtie2, reference_index, output_dir ] 
 #--------------------------------------------------------------------------
 
 # Import libraries
