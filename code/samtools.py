@@ -60,6 +60,5 @@ def Samtools(inputs):
     else:
         print("An error has ocurred")
 
-    print(cmd)
     proc = subprocess.run(cmd, capture_output=True)
     return(proc)

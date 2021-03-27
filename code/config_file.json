@@ -21,6 +21,13 @@
         "sam_ext": ".sam",
         "outdir": "../outputs/04_samtools",
         "threads":5
+    },
+    "markdups":{
+        "bam_dir": "../outputs/04_samtools",
+        "outdir": "../outputs/05_markdups",
+        "bam_ext": ".bam",
+        "picard":"/home/resources/programs/picard.jar",
+        "threads":5
     }
 }
 
