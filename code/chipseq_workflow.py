@@ -27,6 +27,8 @@ import re
 # Pipeline modules
 import fastqc
 import bowtie2
+import samtools
+import markdups
 
 # Function to process the arguments
 def arguments_parser():
@@ -74,17 +76,28 @@ if __name__== "__main__":
     # Execute Bowtie2
     ## Get list of tuples [R1, R2, id, bowtie_threads, ref_index, output_dir]
     fastq_tuples = bowtie2.get_tuples(fastq_ids, config_file)
-    print(fastq_tuples)
+    
     ## Run Bowtie2
     with Pool(config_file['bowtie2']['threads']) as p:
         output = p.map(bowtie2.Bowtie2, fastq_tuples)
+    
+    # Execute Samtools
+    ## Get list of tuples [ids, samtools_threads, output_dir, input_dir, flag option]
+    sam_tuples = samtools.get_tuples(fastq_ids, config_file)
+    
+    ## Run Samtools
+    for option in range(0,2):
+        for i in sam_tuples: i[4] = option
+        with Pool(config_file['samtools']['threads']) as p:
+            output = p.map(samtools.Samtools, sam_tuples)
 
+    # Execute Markdups
+    ## Get list of tuples [ids, samtools_threads, output_dir,picardtools path, input_dir, flag option]
+    bam_tuples = markdups.get_tuples(fastq_ids,config_file)
 
-
-
-
-
-
-
-
-
+    ## Run Markdups
+    for option in range(0,4):
+        for i in bam_tuples: i[5] = option
+        print(bam_tuples)
+        with Pool(config_file['markdups']['threads']) as p:
+            output = p.map(markdups.Markdups, bam_tuples)
